@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npaolett <npaolett@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 14:44:00 by npaolett          #+#    #+#             */
-/*   Updated: 2023/04/27 14:44:00 by npaolett         ###   ########.fr       */
+/*   Created: 2023/04/28 11:36:21 by npaolett          #+#    #+#             */
+/*   Updated: 2023/04/28 11:36:21 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include  "libft.h"
 
-void  *ft_memmove(void *dest, const void *src, size_t n)
+void  ft_putstr(char const *s)
 {
-  char        *ptr_dest;
-  const char  *ptr_src;
-  char        *ptr_swap;
-
-  ptr_dest = (char *)dest;
-  ptr_src = (const char *)src;
-  ptr_swap = (char *)malloc((n) * sizeof(char));
-  ft_bzero(ptr_swap, n);
-  ft_memcpy(ptr_swap, ptr_src, n);
-  ft_memcpy(ptr_dest, ptr_swap, n);
-  free(ptr_swap);
-  return (dest);
+  while (*s)
+  {
+    ft_putchar(*s);
+    s++;
+  }
 }

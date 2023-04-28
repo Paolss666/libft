@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npaolett <npaolett@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 14:44:00 by npaolett          #+#    #+#             */
-/*   Updated: 2023/04/27 14:44:00 by npaolett         ###   ########.fr       */
+/*   Created: 2023/04/27 16:56:31 by npaolett          #+#    #+#             */
+/*   Updated: 2023/04/27 16:56:31 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void  *ft_memmove(void *dest, const void *src, size_t n)
+int ft_strcmp(const char *s1, const char *s2)
 {
-  char        *ptr_dest;
-  const char  *ptr_src;
-  char        *ptr_swap;
+  size_t i;
 
-  ptr_dest = (char *)dest;
-  ptr_src = (const char *)src;
-  ptr_swap = (char *)malloc((n) * sizeof(char));
-  ft_bzero(ptr_swap, n);
-  ft_memcpy(ptr_swap, ptr_src, n);
-  ft_memcpy(ptr_dest, ptr_swap, n);
-  free(ptr_swap);
-  return (dest);
+  i = 0;
+  while (s1[i] && s2[i] && s1[i] == s2[i])
+  {
+    i++;
+  }
+  return (s1[i] - s2[i]);
 }

@@ -14,8 +14,7 @@ NAME=libft.a
 CC=gcc
 CFLAGS= -Wall -Wextra -Werror 
 RM= rm -f
-
-
+SRC= 
 $(NAME): $(OBJ)
 		ar rc $(NAME) $(OBJ)
 		ranlib $(NAME)
