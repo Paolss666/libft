@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: npaolett <npaolett@student42.fr>           +#+  +:+       +#+        */
+/*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 14:59:11 by npaolett          #+#    #+#             */
-/*   Updated: 2023/04/27 14:59:11 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/16 11:05:29 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/27 18:19:31 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char  *ft_strncpy(char *dest, const char *src, size_t n)
+int	ft_print_int(int n)
 {
-  size_t  i;
-
-  i = 0;
-  while (i < n)
-  {
-    dest[i] = src[i];
-    i++;
-  }
-  while (i < n)
-  {
-    dest[i++] = '\0';
-  }
-  return (dest);
+	ft_putnbr_fd(n, 1);
+	return (ft_nblen(n));
 }

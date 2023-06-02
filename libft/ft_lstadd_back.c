@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 11:51:53 by npaolett          #+#    #+#             */
-/*   Updated: 2023/05/08 11:58:57 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/10 11:26:01 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/12 17:52:23 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "libft.h"
+#include "libft.h"
 
-int	ft_atoi(const char *nptr)
+// lst: L’adresse du pointeur vers le premier élément
+// de la liste.
+// new: L’adresse du pointeur vers l’élément à
+// rajouter à la liste.
+
+// Ajoute l’élément ’new’ à la fin de la liste.
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	i;
-	int	number;
-	int	parity;
+	t_list	*tmp;
 
-	number = 0;
-	parity = 0;
-	i = 0;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (*lst)
 	{
-		if (nptr[i] == '-')
-			parity++;
-		i++;
+		tmp = ft_lstlast(*lst);
+		tmp->next = new;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		number = 10 * number + nptr[i] - 48;
-		i++;
-	}
-	if (parity % 2 == 0)
-		return (number);
 	else
-		return (-number);
+		*lst = new;
 }

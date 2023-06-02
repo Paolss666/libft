@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 11:51:53 by npaolett          #+#    #+#             */
-/*   Updated: 2023/05/08 11:58:57 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/03 16:51:34 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/03 17:07:26 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "libft.h"
+#include "libft.h"
 
-int	ft_atoi(const char *nptr)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
-	int	number;
-	int	parity;
+	unsigned int	nb;
 
-	number = 0;
-	parity = 0;
-	i = 0;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	nb = 0;
+	if (n < 0)
 	{
-		if (nptr[i] == '-')
-			parity++;
-		i++;
+		nb = -n;
+		ft_putchar_fd('-', fd);
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		number = 10 * number + nptr[i] - 48;
-		i++;
-	}
-	if (parity % 2 == 0)
-		return (number);
 	else
-		return (-number);
+		nb = n;
+	if (nb > 9)
+	{
+		ft_putnbr_fd((nb / 10), fd);
+		ft_putnbr_fd((nb % 10), fd);
+	}
+	else
+		ft_putchar_fd(nb + 48, fd);
 }
+
+// int main(void)
+// {
+// 	int fd = 1;
+// 	int n  = 1000;
+
+// 	 ft_putnbr_fd(n, fd);
+// }

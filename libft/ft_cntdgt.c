@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_cntdgt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: npaolett <npaolett@student42.fr>           +#+  +:+       +#+        */
+/*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 11:34:25 by npaolett          #+#    #+#             */
-/*   Updated: 2023/04/28 11:34:25 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/16 13:31:06 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/20 17:52:46 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "libft.h"
+#include "libft.h"
 
-void  ft_putchar(char c)
+unsigned long long	ft_cntdgt(unsigned long long n, int base)
 {
-  write(1, &c, 1);
+	unsigned long long	ret;
+
+	ret = 0;
+	if (n == 0)
+		ret++;
+	while (n)
+	{
+		ret++;
+		n = n / base;
+	}
+	return (ret);
 }

@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: npaolett <npaolett@student42.fr>           +#+  +:+       +#+        */
+/*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 11:36:21 by npaolett          #+#    #+#             */
-/*   Updated: 2023/04/28 11:36:21 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/10 11:16:16 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/10 11:20:38 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "libft.h"
+#include "libft.h"
 
-void  ft_putstr(char const *s)
+//st: Le début de la liste.
+// Return : Dernier élément de la liste
+
+t_list	*ft_lstlast(t_list *lst)
 {
-  while (*s)
-  {
-    ft_putchar(*s);
-    s++;
-  }
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+	}
+	return (lst);
 }

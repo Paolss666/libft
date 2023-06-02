@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 11:51:53 by npaolett          #+#    #+#             */
-/*   Updated: 2023/05/08 11:58:57 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/15 18:31:09 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/27 18:19:12 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "libft.h"
+#include "libft.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_printf(const char *format, ...)
 {
-	int	i;
-	int	number;
-	int	parity;
+	int		i;
+	int		ret;
+	va_list	args;
 
-	number = 0;
-	parity = 0;
 	i = 0;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	ret = 0;
+	va_start(args, format);
+	while (format[i])
 	{
-		if (nptr[i] == '-')
-			parity++;
+		if (format[i] == '%')
+		{
+			ret += ft_eval_format(args, format[i + 1]);
+			i++;
+		}
+		else
+			ret += write(1, &format[i], 1);
 		i++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		number = 10 * number + nptr[i] - 48;
-		i++;
-	}
-	if (parity % 2 == 0)
-		return (number);
-	else
-		return (-number);
+	va_end(args);
+	return (ret);
 }

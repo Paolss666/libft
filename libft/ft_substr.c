@@ -1,46 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 10:59:48 by npaolett          #+#    #+#             */
-/*   Updated: 2023/05/12 11:43:52 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/03 17:13:16 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/12 09:40:24 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char const	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	size_t	j;
+	size_t		i;
+	size_t		j;
+	char		*new_s;
 
 	i = 0;
-	if (*little == '\0')
-		return ((char *)big);
-	if (len == 0)
+	j = 0;
+	if (!s)
 		return (NULL);
-	while (big[i] && i < len)
+	new_s = (char *)malloc((len + 1) * sizeof(char));
+	if (!new_s)
+		return (NULL);
+	while (s[i])
 	{
-		j = 0;
-		while (big[i + j] == little[j] && i + j < len)
+		if (i >= start && j < len)
 		{
+			new_s[j] = s[i];
 			j++;
-			if (little[j] == '\0')
-				return ((char *)&big[i]);
 		}
 		i++;
 	}
-	return (NULL);
+	new_s[j] = '\0';
+	return (new_s);
 }
 
-// int	main(void)
+// int main(void)
 // {
-// 	char *str = "nicoooooooolo";
-// 	char *str2  = "oolo";
-// 	int	len = 3;
-
-// 	printf("%s\n", ft_strnstr(str, str2, len));
+// 	char str[] ="michiamoNico";
+// 	printf("%s\n", ft_substr(str,8,4));
 // }

@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 17:08:51 by npaolett          #+#    #+#             */
-/*   Updated: 2023/05/03 11:01:41 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/10 15:42:23 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/10 15:52:48 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+// lst: L’adresse du pointeur vers un élément.
+// f: L’adresse de la fonction à appliquer.
+// itère sur la liste ’lst’ et applique la fonction
+// ’f’ au contenu chaque élément.
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (c >= 'A' && c <= 'Z')
-		return ((c + 32));
-	else
-		return (c);
+	while (lst && f)
+	{
+		(*f)(lst->content);
+		lst = lst->next;
+	}
 }

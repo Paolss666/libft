@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: npaolett <npaolett@student42.fr>           +#+  +:+       +#+        */
+/*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 14:36:52 by npaolett          #+#    #+#             */
-/*   Updated: 2023/04/27 14:36:52 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/03 13:04:27 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/03 13:08:33 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void  *ft_memccpy(void  *dest, const void *src, int c, size_t n)
+void	ft_putchar_fd(char c, int fd)
 {
-  
+	write(fd, &c, 1);
 }

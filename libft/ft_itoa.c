@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 11:51:53 by npaolett          #+#    #+#             */
-/*   Updated: 2023/05/08 11:58:57 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/04 12:05:47 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/27 18:34:56 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "libft.h"
+#include "libft.h"
 
-int	ft_atoi(const char *nptr)
+char	*ft_itoa(int n)
 {
-	int	i;
-	int	number;
-	int	parity;
+	char	*new_s;
+	long	number;
+	int		nblen;
 
-	number = 0;
-	parity = 0;
-	i = 0;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	nblen = ft_nblen(n);
+	number = n;
+	new_s = (char *)malloc(sizeof(char) * nblen + 1);
+	if (!new_s)
+		return (NULL);
+	if (number < 0)
 	{
-		if (nptr[i] == '-')
-			parity++;
-		i++;
+		new_s[0] = '-';
+		number = -number;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	if (number == 0)
+		new_s[0] = '0';
+	new_s[nblen--] = '\0';
+	while (number)
 	{
-		number = 10 * number + nptr[i] - 48;
-		i++;
+		new_s[nblen] = number % 10 + 48;
+		nblen--;
+		number = number / 10;
 	}
-	if (parity % 2 == 0)
-		return (number);
-	else
-		return (-number);
+	return (new_s);
 }

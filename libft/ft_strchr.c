@@ -3,27 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: npaolett <npaolett@student42.fr>           +#+  +:+       +#+        */
+/*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 11:07:00 by npaolett          #+#    #+#             */
-/*   Updated: 2023/04/28 11:07:00 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/02 18:15:32 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/11 14:17:47 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char  *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-  size_t  i;
-  const char  *c_found;
+	char	find;
+	int		i;
 
-  i = 0;
-  c_found = NULL;
-  while (s[i])
-  {
-    if (s[i] == c)
-      c_found = &s[i];
-    i++;
-  }
-  return ((char *)c_found);
+	find = (unsigned char) c;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == find)
+			return (((char *)s + i));
+		i++;
+	}
+	if (s[i] == find)
+		return (((char *)s + i));
+	return (0);
 }
+
+// int main(void)
+// {
+// 	char *s = "\0";
+// 	int c = '\0' ;
+// 	printf("ma ft :%s.\n", ft_strchr(s, c));
+// 	printf("la vrai :%s." ,strchr(s, c));
+// }

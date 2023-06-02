@@ -3,37 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: npaolett <npaolett@student42.fr>           +#+  +:+       +#+        */
+/*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 15:19:55 by npaolett          #+#    #+#             */
-/*   Updated: 2023/04/27 15:19:55 by npaolett         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:35:07 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int		ft_strlcat(char *dest, char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned int	i;
-	unsigned int	srclen;
-	unsigned int	destlen;
+	size_t	i;
+	size_t	len_src;
+	size_t	len_dst;
 
 	i = 0;
-	srclen = ft_strlen(src);
-	destlen = ft_strlen(dest);
-	if (size <= destlen)
-		srclen = srclen + size;
-	else
-		srclen = srclen + destlen;
-	if (size > destlen)
+	if (!dst && size == 0)
+		return (ft_strlen(src));
+	len_src = ft_strlen(src);
+	len_dst = ft_strlen(dst);
+	if (size < len_dst + 1)
+		return (size + len_src);
+	if (size > len_dst + 1)
 	{
-		while (src[i] && (destlen + 1) < size)
+		while (src[i] && (len_dst + 1 + i) < size)
 		{
-			dest[destlen] = src[i];
+			dst[len_dst + i] = src[i];
 			i++;
-			destlen++;
 		}
 	}
-	dest[destlen] == '\0';
-	return (srclen);
+	dst[len_dst + i] = '\0';
+	return (len_dst + len_src);
 }
+
+// int main(void)
+// {
+// 	char *src = "lol";
+// 	char *dst = NULL;
+// 	char *dst1 = NULL;
+// 	int		size = 0;
+// 	printf("%zu \n", ft_strlcat(dst, src, size));
+// 	printf("%zu", strlcat(dst1, src, size));
+//  }

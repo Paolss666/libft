@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 17:08:51 by npaolett          #+#    #+#             */
-/*   Updated: 2023/05/03 11:01:41 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/10 10:38:44 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/10 11:15:09 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+// lst : le debut de la liste
+// Retourn : Taille de la liste 
+// Description : Compte le nombre d'elements de la liste 
+
+int	ft_lstsize(t_list *lst)
 {
-	if (c >= 'A' && c <= 'Z')
-		return ((c + 32));
-	else
-		return (c);
+	int	count;
+
+	count = 0;
+	if (!lst)
+		return (0);
+	while (lst)
+	{
+		lst = lst->next;
+		count++;
+	}
+	return (count);
 }

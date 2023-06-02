@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npaolett <npaolett@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 17:08:51 by npaolett          #+#    #+#             */
-/*   Updated: 2023/05/03 11:01:41 by npaolett         ###   ########.fr       */
+/*   Created: 2023/05/05 11:12:15 by npaolett          #+#    #+#             */
+/*   Updated: 2023/05/06 17:06:02 by npaolett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+void	ft_putendl_fd(char *s, int fd)
 {
-	if (c >= 'A' && c <= 'Z')
-		return ((c + 32));
-	else
-		return (c);
+	if (s && fd)
+	{
+		write(fd, s, ft_strlen(s));
+		write(fd, "\n", 1);
+	}
 }
